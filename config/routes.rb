@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   get 'top/index'
 
   root "top#index"
+  resources :users, only: %i(show)
 end
