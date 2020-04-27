@@ -3,6 +3,6 @@ class ReportsController < ApplicationController
     @report = Report.all
   end
   def new
-    
+    @report = Report.new
   end
 end
