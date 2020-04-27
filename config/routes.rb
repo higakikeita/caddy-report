@@ -4,5 +4,5 @@ Rails.application.routes.draw do
 
   root "top#index"
   resources :users, only: %i(show)
-  resources :reports, only: [:index,:new]
+  resources :reports, only: [:index,:new,:create]
 end
