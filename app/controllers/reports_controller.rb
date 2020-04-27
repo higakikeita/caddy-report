@@ -1,6 +1,7 @@
 class ReportsController < ApplicationController
   def index
-    @report = Report.all
+    @reports = Report.all
+    
   end
   def new
     @report = Report.new
@@ -9,8 +10,8 @@ class ReportsController < ApplicationController
     @report = Report.new(report_params)
     
     @report.save
-    binding.pry
-    redirect_to root_path
+    
+    redirect_to reports_path
   end
   private
   def report_params
