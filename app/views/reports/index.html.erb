@@ -1,4 +1,9 @@
 <% @reports.each do |report| %>
 <%=report.name%>
 <%=report.bags%>
+
+<% end %>
+<%= form_tag(search_reports_path,local:true, method: :get) do|form|%> 
+<%= text_field_tag :name, placeholder: "投稿を検索する", class: "search-input" %>
+  <%= button_tag "検索", class: "search-btn",type:"submit" %>
 <% end %>
