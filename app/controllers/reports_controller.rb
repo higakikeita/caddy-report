@@ -1,9 +1,11 @@
 class ReportsController < ApplicationController
+  before_action :set_ransack
   def index
-    @four_bags=Report.bags(3)
-    @three_bags=Report.bags(2)
-    @two_bags=Report.bags(1)
-    @one_bags=Report.bags(0)
+    @four_bags=Report.where(bags:"4").order(created_at: "DESC").limit(10)
+    @three_bags=Report.where(bags:"3").order(created_at: "DESC").limit(10)
+    @two_bags=Report.where(bags:"2").order(created_at: "DESC").limit(10)
+    @one_bags=Report.where(bags:"1").order(created_at: "DESC").limit(10)
+    
     @q=Report.ransack(params[:q])
     @reports=@q.result(distinct: true)
   end
@@ -28,6 +30,10 @@ class ReportsController < ApplicationController
   end
 
   def search_params
-    params.require(:q).permit!
+    params.require(:q).permit(:bags,:name_cont,:registered_at)
+  end
+  def set_ransack
+    @q        = Report.ransack(params[:q])
+    
   end
 end
