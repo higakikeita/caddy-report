@@ -1,7 +1,3 @@
-- @reports.each do |report|
-  = report.registered_at
-  = report.name
-  = report.bags
 = search_form_for(@q,url:search_report_path(@reports)) do|f|
 
   = f.label :registered_at,"日付で検索"
@@ -13,6 +9,32 @@
   = f.label :name_cont,"名前で検索"
   = f.search_field :name_cont,  class: "search-input"
   = f.submit "検索", class: "search-btn",type:"submit"
+
+
+
+
+
+
+.4bags 4バックのメンバー
+- @four_bags.each do |report|
+  =report.name
+.3bags ３バックのメンバー
+- @three_bags.each do |report|
+  =report.name
+.2bags 2バックのメンバー
+- @two_bags.each do |report|
+  =report.name
+.1bags 1バックのメンバー
+- @one_bags.each do |report|
+  =report.name
+
 .return_btn
   = link_to "caddy情報登録ページへ",new_report_path,class:"teacher-details-edit__btn"
-  
+.register_all すべての登録情報
+- @reports.each do |report|
+  .register_day 登録した日
+  = report.registered_at
+  .register_name 登録名
+  = report.name
+  .register_bags 登録バック数
+  = report.bags
