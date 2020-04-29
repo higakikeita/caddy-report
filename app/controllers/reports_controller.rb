@@ -1,6 +1,9 @@
 class ReportsController < ApplicationController
   def index
-    
+    @4bags=Report.bags(3)
+    @3bags=Report.bags(2)
+    @2bags=Report.bags(1)
+    @1bags=Report.bags(0)
     @q=Report.ransack(params[:q])
     @reports=@q.result(distinct: true)
   end
