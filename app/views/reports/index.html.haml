@@ -2,6 +2,16 @@
   = report.registered_at
   = report.name
   = report.bags
-= form_tag(search_report_path(@reports),local:true, method: :get) do|form|
-  = date_select :created_at,  class: "search-input"
-  = button_tag "検索", class: "search-btn",type:"submit"
+= search_form_for(@q,url:search_report_path(@reports)) do|f|
+
+  = f.label :created_at,"日付で検索"
+  = f.date_select :registered_at_lteq_end_of_day,  class: "search-input"
+  = f.submit "検索", class: "search-btn",type:"submit"
+= search_form_for(@q,url:search_report_path(@reports)) do|f|
+
+  = f.label :name_cont,"名前で検索"
+  = f.search_field :name_cont,  class: "search-input"
+  = f.submit "検索", class: "search-btn",type:"submit"
+.return_btn
+  = link_to "caddy情報登録ページへ",new_report_path,class:"teacher-details-edit__btn"
+  

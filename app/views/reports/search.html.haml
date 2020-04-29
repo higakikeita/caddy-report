@@ -1,6 +1,6 @@
 .contents.row
   = @reports.each do |report|
-    =link_to reports_path(report.id) do
+    =link_to reports_path(@report) do
       .caddy-name 
       = report.name
       = report.bags

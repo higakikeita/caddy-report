@@ -1,7 +1,8 @@
 class ReportsController < ApplicationController
   def index
-    @reports = Report.all
     
+    @q=Report.ransack(params[:q])
+    @reports=@q.result(distinct: true)
   end
   def new
     @report = Report.new
@@ -14,11 +15,16 @@ class ReportsController < ApplicationController
     redirect_to reports_path
   end
   def search
-    @reports = Report.search(params[:search]).order(registered_at: :asc)
+    @q=Report.ransack(search_params)
+    @reports=@q.result(distinct: true)
     
   end
   private
   def report_params
   params.require(:report).permit(:name,:bags,:registered_at).merge(user_id: current_user.id)
+  end
+
+  def search_params
+    params.require(:q).permit!
   end
 end
