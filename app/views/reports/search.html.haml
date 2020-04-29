@@ -1,3 +1,10 @@
 .contents.row
   = @reports.each do |report|
-    = @reports.name
+    =link_to reports_path do
+      .caddy-name 
+      = report.name
+      = report.bags
+.return_btn
+  = link_to "caddy情報登録ページへ",new_report_path,class:"teacher-details-edit__btn"
+.return_btn
+  = link_to "caddy情報検索ページへ",search_reports_path,class:"teacher-details-edit__btn"

@@ -4,7 +4,7 @@ class Report < ApplicationRecord
     "1bags":0,"2bags":1,"3bags":2,"4bags":3
   }
   def self.search(search)
-    
-    Report.where(registered_at: 1.day.ago.all_day)
+    return Report.all unless search
+    Report.where(['content LIKE ?', "%#{search}%"])
   end
 end

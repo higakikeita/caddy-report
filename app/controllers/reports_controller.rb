@@ -14,7 +14,7 @@ class ReportsController < ApplicationController
     redirect_to reports_path
   end
   def search
-    @reports = Report.search(params[:registered_at]).order(registered_at: :asc)
+    @reports = Report.search(params[:search]).order(registered_at: :asc)
     
   end
   private

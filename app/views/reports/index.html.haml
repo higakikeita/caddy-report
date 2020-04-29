@@ -1,4 +1,5 @@
 - @reports.each do |report|
+  = report.registered_at
   = report.name
   = report.bags
 = form_tag(search_reports_path,local:true, method: :get) do|form|
