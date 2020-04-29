@@ -1,0 +1,7 @@
+お疲れ様です。日々の業務を入力してくださいね
+= form_for @report do |f|
+  = f.label :name
+  = f.text_field :name
+  = f.select :bags,Report.bags.keys,{},class:"select--wrap__default "
+  = f.date_field :registered_at
+  = f.submit "登録する", class: "btn btn-primary"

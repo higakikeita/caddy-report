@@ -13,6 +13,10 @@ class ReportsController < ApplicationController
     
     redirect_to reports_path
   end
+  def search
+    @reports = Report.search(params[:registered_at]).order(registered_at: :asc)
+    
+  end
   private
   def report_params
   params.require(:report).permit(:name,:bags,:registered_at).merge(user_id: current_user.id)

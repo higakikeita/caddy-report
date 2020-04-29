@@ -3,4 +3,8 @@ class Report < ApplicationRecord
   enum bags:{
     "1bags":0,"2bags":1,"3bags":2,"4bags":3
   }
+  def self.search(search)
+    
+    Report.where(registered_at: 1.day.ago.all_day)
+  end
 end
