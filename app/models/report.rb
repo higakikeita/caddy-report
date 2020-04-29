@@ -5,6 +5,6 @@ class Report < ApplicationRecord
   }
   def self.search(search)
     return Report.all unless search
-    Report.where(['content LIKE ?', "%#{search}%"])
+    Report.where(created_at: 1.day.ago.all_day,)
   end
 end

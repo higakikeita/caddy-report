@@ -2,6 +2,6 @@
   = report.registered_at
   = report.name
   = report.bags
-= form_tag(search_reports_path,local:true, method: :get) do|form|
-  = date_select :registered_at,  class: "search-input"
+= form_tag(search_report_path(@reports),local:true, method: :get) do|form|
+  = date_select :created_at,  class: "search-input"
   = button_tag "検索", class: "search-btn",type:"submit"
