@@ -8,6 +8,7 @@ class ReportsController < ApplicationController
     
     @q=Report.ransack(params[:q])
     @reports=@q.result(distinct: true)
+    
   end
   def new
     @report = Report.new
@@ -30,7 +31,7 @@ class ReportsController < ApplicationController
   end
 
   def search_params
-    params.require(:q).permit(:bags,:name_cont,:registered_at)
+    params.require(:q).permit(:bags,:name_cont,:registered_at,:created_at,:created_at_gt,:created_at_lt,:registered_at_gt,:registered_at_lt,:registered_at_eq)
   end
   def set_ransack
     @q        = Report.ransack(params[:q])

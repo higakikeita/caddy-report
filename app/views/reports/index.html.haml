@@ -1,9 +1,11 @@
 = search_form_for(@q,url:search_report_path(@reports)) do|f|
 
   = f.label :registered_at,"日付で検索"
-  = f.date_select :registered_at_gteq
-  = f.date_select :registered_at_lteq_end_of_day,  class: "search-input"
+  = f.date_field :registered_at_eq
+  
   = f.submit "検索", class: "search-btn",type:"submit"
+
+  
 = search_form_for(@q,url:search_report_path(@reports)) do|f|
 
   = f.label :name_cont,"名前で検索"
@@ -38,3 +40,4 @@
   = report.name
   .register_bags 登録バック数
   = report.bags
+  

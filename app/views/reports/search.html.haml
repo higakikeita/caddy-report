@@ -1,9 +1,12 @@
+
+検索した結果はこちら
 .contents.row
   = @reports.each do |report|
+   
     =link_to reports_path(@report) do
-      .caddy-name 
+      .caddy-name キャディさんの名前
       = report.name
-      .caddy-bags
+      .caddy-bags バック数
       = report.bags
 .return_btn
   = link_to "caddy情報登録ページへ",new_report_path,class:"teacher-details-edit__btn"
